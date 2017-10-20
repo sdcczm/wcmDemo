@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!--/*@thymesVar id="user" type="cn.wilmar.wcmdemo.User"*/-->
+<form th:object="${user}" method="post" id="user-form"
+      action="./userList.html" th:action="${user['new']} ? '/user/new' : '/user/'+${user.id}+'/edit'"
+      class="form-horizontal">
+    <div>
+        <label>账户名</label>
+        <input type="text" th:value="*{username}" name="username">
+    </div>
+    <div>
+        <label>密码</label>
+        <input type="text" name="password">
+    </div>
+    <div>
+        <label>确认密码</label>
+        <input type="text" name="confirm-password">
+    </div>
+    <div>
+        <label>姓名</label>
+        <input type="text" th:value="*{fullName}" name="fullName">
+    </div>
+    <div>
+        <button type="submit"><span th:text="${user['new']} ? '保存' : '更新'"> 保存/更新</span></button>
+    </div>
+</form>
+
+
+</body>
+</html>
